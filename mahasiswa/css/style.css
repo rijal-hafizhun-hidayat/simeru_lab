@@ -1,0 +1,25 @@
+.bg-img{
+    background-image: url("../gambar/image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    width: 1000px;
+    margin-bottom: 50px;
+}
+.container .row{
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+.img{
+    margin: 40px 0px;
+}
+.img img{
+    width: 150px;
+    height: 150px;
+}
+.bg-img .container .row .col-sm-9 .line-horizontal{
+    margin: 50px 0px;
+}
