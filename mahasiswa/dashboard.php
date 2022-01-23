@@ -41,12 +41,10 @@ $user_level = isset($_SESSION['user_level']) ? $_SESSION['user_level'] : false;
                             <th scope="col">No</th>
                             <th scope="col">Nama Ruangan</th>
                             <th scope="col">Deskripsi</th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <?php
-                    $list_ruang = mysqli_query($koneksi, "SELECT * FROM ruang WHERE status='on'");
+                    $list_ruang = mysqli_query($koneksi, "SELECT * FROM ruang WHERE status_ruang='kosong'");
                     if (mysqli_num_rows($list_ruang)) {
                         while ($row = mysqli_fetch_array($list_ruang)) {
                             //untuk menampilkan list data
@@ -55,9 +53,7 @@ $user_level = isset($_SESSION['user_level']) ? $_SESSION['user_level'] : false;
                                 <tr>
                                     <td><?php echo $row['ruang_nama'] ?></td>
                                     <td><?php echo $row['ruang_kapasitas'] ?></td>
-                                    <td><?php echo $row['ruang_deskripsi'] ?></td>
-                                    <td><?php echo $row['ruang_foto'] ?></td>
-                                    <td><?php echo $row['status'] ?></td>
+                                    <td><?php echo $row['fasilitas'] ?></td>
                                 </tr>
                             </tbody>
                     <?php }
@@ -70,7 +66,7 @@ $user_level = isset($_SESSION['user_level']) ? $_SESSION['user_level'] : false;
                         <label for="exampleInputPassword1" class="form-label">Pilih ruangan</label>
                         <select class="form-select" aria-label="Default select example" name="ruang_id">
                             <?php
-                            $query = mysqli_query($koneksi, "SELECT ruang_id, ruang_nama FROM ruang WHERE status='on'");
+                            $query = mysqli_query($koneksi, "SELECT ruang_id, ruang_nama FROM ruang WHERE status_ruang='kosong'");
                             while ($row = mysqli_fetch_assoc($query)) {
                                 if ($ruang_id == $row['ruang_id']) {
                                     echo "<option value='$row[ruang_id]' selected='true'>$row[ruang_nama]</option>";

@@ -67,24 +67,24 @@
                     </thead>
                     <?php
                     $no = 1;
-                    $list_ruang = mysqli_query($koneksi, "SELECT * FROM booking");
+                    $list_ruang = mysqli_query($koneksi, "SELECT * FROM booking INNER JOIN user ON booking.user_id = user.user_id INNER JOIN ruang ON booking.ruang_id = ruang.ruang_id");
                     if (mysqli_num_rows($list_ruang)) {
                       while ($row = mysqli_fetch_array($list_ruang)) {
-                        $status = $row['status'];
+                        $status = $row['status_book'];
                         //untuk menampilkan list data
                     ?>
                         <tbody>
                           <tr>
                             <td><?php echo $no ?></td>
-                            <td><?php echo $row['book_id'] ?></td>
-                            <td><?php echo $row['ruang_id'] ?></td>
+                            <td><?php echo $row['user_username'] ?></td>
+                            <td><?php echo $row['ruang_nama'] ?></td>
                             <td><?php echo $row['book_waktuMulai'] ?></td>
                             <td><?php echo $row['book_waktuSelesai'] ?></td>
                             <td><?php echo $row['book_tanggal'] ?></td>
                             <td><?php echo $arrayStatusPesanan[$status] ?></td>
                             <td>
                               <a href="index.php?page=detail_pesanan&id=<?php echo $row['book_id']; ?>"><button type="button" class="btn btn-info">Detail Pesanan</button></a>
-                              <a href="dashboard.php?page=update_status&book_id=<?php echo $row['book_id']; ?>"><button type="button" class="btn btn-info">Update Pesanan</button></a>
+                              <a href="dashboard.php?page=update_status&book_id=<?php echo $row['book_id']; ?>&ruang_id=<?php echo $row['ruang_id']; ?>"><button type="button" class="btn btn-info">Update Pesanan</button></a>
                             </td>
                           </tr>
                         </tbody>

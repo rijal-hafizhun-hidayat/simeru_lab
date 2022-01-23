@@ -3,13 +3,15 @@ include_once("../function/koneksi.php");
 include_once("../function/helper.php");
 
 $book_id = $_GET["book_id"];
+$ruang_id = $_GET['ruang_id'];
 
-$query = mysqli_query($koneksi, "SELECT status FROM booking WHERE book_id='$book_id'");
+$query = mysqli_query($koneksi, "SELECT status_book FROM booking WHERE book_id='$book_id'");
 $row = mysqli_fetch_assoc($query);
-$status = $row['status'];
+$status = $row['status_book'];
+
 
 ?>
-<form method="POST" action="update_proses.php?book_id=<?php echo $book_id ?>">
+<form method="POST" action="update_proses.php?book_id=<?php echo $book_id ?>&ruang_id=<?php echo $ruang_id ?>">
     <div class="element-form">
         <label>Booking ID</label>
         <span><input type="text" value="<?php echo $book_id; ?>" name="book_id" readonly="true" /></span>

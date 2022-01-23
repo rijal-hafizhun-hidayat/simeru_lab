@@ -33,7 +33,7 @@
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Jumlah</label>
-                                      <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="Kapasitas Ruang">
+                                      <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="jumlah barang">
                                   </div>
                                   <div class="form-group">
                                       <label>Keterangan</label>
@@ -55,9 +55,13 @@
                                 $keterangan = $_POST['keterangan'];
                                 $sql = "INSERT INTO asset VALUES(NULL, '$ruang', '$nama_barang', '$jumlah', '$keterangan')";
 
+                                $sql_2 = "UPDATE ruang SET kode_barang='$ruang' WHERE ruang_id='$ruang'";
+
+                                $change = mysqli_query($koneksi, $sql_2);
+
                                 $masuk = mysqli_query($koneksi, $sql);
 
-                                if ($masuk === true) { ?>
+                                if ($masuk === true && $change == true) { ?>
                                   <script>
                                       alert("berhasil input data");
                                   </script>

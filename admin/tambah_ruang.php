@@ -17,20 +17,12 @@
                       <input type="text" name="nama" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama Ruang">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Deskripsi</label>
-                      <input type="text" name="deskripsi" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Deskripsi">
-                    </div>
-                    <div class="form-group">
                       <label for="exampleInputPassword1">Kapasitas</label>
                       <input type="text" name="kapasitas" class="form-control" id="exampleInputPassword1" placeholder="Kapasitas Ruang">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Gambar</label>
-                      <input type="text" name="gambar" class="form-control" id="exampleInputPassword1" placeholder="Gambar">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Jumlah Ruang</label>
-                      <input type="text" name="status" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Ruang">
+                      <label for="exampleFormControlTextarea1" class="form-label">keterangan fasilitas</label>
+                      <textarea name="fasilitas" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                   </div>
                   <!-- /.card-body -->
@@ -43,12 +35,10 @@
 
                 if (isset($_POST['kirim'])) {
                   $nama = htmlspecialchars($_POST['nama']);
-                  $deskripsi = htmlspecialchars($_POST['deskripsi']);
+                  $deskripsi = htmlspecialchars($_POST['fasilitas']);
                   $kapasitas = htmlspecialchars($_POST['kapasitas']);
-                  $gambar = htmlspecialchars($_POST['gambar']);
-                  $status = htmlspecialchars($_POST['status']);
 
-                  $insert = mysqli_query($koneksi, "INSERT INTO ruang VALUES (NULL, '$nama', '$deskripsi', '$kapasitas', '$gambar', '$status')");
+                  $insert = mysqli_query($koneksi, "INSERT INTO ruang VALUES (NULL, '$nama', '$kapasitas', '$deskripsi', 'on')");
 
                   if ($insert) {
                     echo "<div class='col-md-11 col-sm-12 col-xs-12'>";

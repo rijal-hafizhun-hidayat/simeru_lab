@@ -112,14 +112,6 @@ $level = isset($_SESSION['user_level']) ? $_SESSION['user_level'] : false;
               </a>
             </li>
             <li class="nav-item">
-              <a href="dashboard.php?page=tambah_fasilitas" class="nav-link">
-                <i class="nav-icon fas fa-laptop"></i>
-                <p>
-                  Tambah Fasilitas
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="logout.php" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
